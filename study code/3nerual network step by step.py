@@ -6,7 +6,7 @@ class Net(nn.Module):
     def __init__(self): #define neural network structure, input data 1*32*32
         super(Net, self).__init__()
         #first layer (convolution layer)
-        self.convl = nn.Conv2d(1,6,3) #input:1, output:6, convolution layer:3*3
+        self.conv1 = nn.Conv2d(1,6,3) #input:1, output:6, convolution layer:3*3
         #second layer (convolution layer)
         self.conv2 = nn.Conv2d(6,16,3) #input:6, output:16, convolution layer:3*3
         #third layer (fully connected layer)
@@ -36,3 +36,13 @@ class Net(nn.Module):
 
 net = Net()
 print(net)
+
+#build a random input
+input_data = torch.randn(1,1,32,32) 
+print(input_data)
+print(input_data.size())
+
+#run nerual network
+out = net(input_data)
+print(out)
+print(out.size())
