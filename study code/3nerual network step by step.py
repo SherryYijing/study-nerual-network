@@ -46,3 +46,13 @@ print(input_data.size())
 out = net(input_data)
 print(out)
 print(out.size())
+
+#build a random real numbuer
+target = torch.randn(2)
+target = target.view(1,-1)
+print(target)
+
+#define loss function and calculate loss
+criterion = nn.L1Loss()
+loss = criterion(out,target)
+print(loss)
