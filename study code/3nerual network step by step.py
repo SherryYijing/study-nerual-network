@@ -56,3 +56,19 @@ print(target)
 criterion = nn.L1Loss()
 loss = criterion(out,target)
 print(loss)
+
+#reverse passing
+net.zero_grad() #clear all gradient
+loss.backward() #automatic calculation and recerse passing
+
+#update gradient
+import torch.optim as optim
+optimizer = optim.SGD(net.parameters(),lr=0.01)
+optimizer.step()
+
+out = net(input_data)
+print(out)
+print(out.size())
+loss = criterion(out,target)
+print(loss)
+#we got less loss than first time
