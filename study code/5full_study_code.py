@@ -85,6 +85,24 @@ def main():
 
             if(i%1000 == 0):
                 print('Epoch: %d, step: %d, Loss: %.3f', %(epoch,i,loss.item()))
+                
+    #test our model
+    correct = 0.0
+    total = 0.0
+
+    with torch.no_grad():
+        for data in testloader:
+            images,labels = data
+
+            outputs = net(images)
+
+            _,predicted = torch.max(outputs.data,1)
+
+            correct += (predicted==labels).sum()
+            total += labels.size(0)
+            
+    #calculate studying accuracy
+    print('Accuracy:', float(correct)/total)
 
 if __name__ == '__main__':
 
