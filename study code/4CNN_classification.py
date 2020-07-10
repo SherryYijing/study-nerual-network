@@ -27,7 +27,15 @@ def imshow(img):
     nping = np.transpose(nping,(1,2,0)) #turn[c,j,w] to [h,w,c]
     plt.imshow(nping)
 
-dataiter = iter(trainloader) #random loading a mini batch
-images,labels = dataiter.next()
+#in Windows environment need to have these code
+if __name__ == '__main__':
 
-imshow(torchvision.utils.make_grid(images))
+    torch.multiprocessing.set_start_method('spawn')
+
+    dataIter = iter(trainloader) #random loading a mini batch
+
+    images,labels = dataIter.next()
+
+    imshow(torchvision.utils.make_grid(images))
+    
+    plt.show()
