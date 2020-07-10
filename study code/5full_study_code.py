@@ -84,7 +84,7 @@ def main():
             optimizer.step()
 
             if(i%1000 == 0):
-                print('Epoch: %, step: %d, Loss: %.3f', %(epoch,i,loss.item()))
+                print('Epoch: %d, step: %d, Loss: %.3f', %(epoch,i,loss.item()))
 
 if __name__ == '__main__':
 
